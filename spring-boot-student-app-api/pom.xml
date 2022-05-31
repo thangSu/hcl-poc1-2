@@ -70,7 +70,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>registry.hub.docker.com/thangsu/${project.artifactId}</repository>
+					<repository>thangsu/${project.artifactId}</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
