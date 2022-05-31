@@ -73,6 +73,7 @@
 					<username>thangsu</username>
 					<password>yen2k0809</password>
 					<repository>thangsu/${project.artifactId}</repository>
+					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
