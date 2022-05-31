@@ -70,6 +70,8 @@
 					</execution>
 				</executions>
 				<configuration>
+					<username>thangsu</username>
+					<password>yen2k0809</password>
 					<repository>thangsu/${project.artifactId}</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
