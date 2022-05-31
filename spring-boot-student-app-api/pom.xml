@@ -62,7 +62,7 @@
 				<version>1.4.13</version>
 				<executions>
 					<execution>
-						<phase>package</phase>
+						<id>default</id>
 						<goals>
 							<goal>build</goal>
 							<goal>push</goal>
