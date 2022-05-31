@@ -72,6 +72,7 @@
 				<configuration>
 					<repository>thangsu/${project.artifactId}</repository>
 					<tag>${project.version}</tag>
+					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 					<buildArgs>
 						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
