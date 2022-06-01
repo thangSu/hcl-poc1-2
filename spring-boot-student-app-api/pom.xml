@@ -70,7 +70,9 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>thangsu/${project.artifactId}</repository>
+					<username>thangsu</username>
+					<password>yen2k0809</password>
+					<repository>registry.hub.docker.com/thangsu/${project.artifactId}</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
