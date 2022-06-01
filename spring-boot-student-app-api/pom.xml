@@ -71,6 +71,7 @@
 				</executions>
 				<configuration>
 					<serverId>docker</serverId>
+					<registryUrl>https://index.docker.io/v1/</registryUrl>
 					<repository>thangsu/${project.artifactId}</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
