@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: Gateway
+  name: gateway
 spec:
   selector:
     istio: ingress
@@ -10,5 +10,5 @@ spec:
         number: 80
         name: http
         protocol: HTTP
-      host:
+      hosts:
         - "*"
