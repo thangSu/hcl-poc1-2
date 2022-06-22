@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: poc2-v1
+  name: ingress
 spec:
   hosts:
     - "*"
@@ -16,6 +16,8 @@ spec:
           host: student-app-api.default.svc.cluster.local
           port:
             number: 8080
+    - match:
+      route:
       - destination:
           host: mongo.default.svc.cluster.local
           port:
