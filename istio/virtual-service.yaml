@@ -12,12 +12,12 @@ spec:
       - uri:
           prefix: '/api'
       route:
-      - destination:
+        - destination:
           host: student-app-api.default.svc.cluster.local
           port:
             number: 8080
     - route:
-      - destination:
+        - destination:
           host: student-app-client.default.svc.cluster.local
           port:
             number: 80
