@@ -16,14 +16,28 @@ spec:
           host: student-app-api.default.svc.cluster.local
           port:
             number: 8080
-    - match:
-      route:
-      - destination:
-          host: mongo.default.svc.cluster.local
-          port:
-            number: 27017
     - route:
       - destination:
           host: student-app-client.default.svc.cluster.local
           port:
             number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bookinfo
+spec:
+  hosts:
+    - "*"
+  tcp:
+  - match:
+    route:
+    - destination:
+        host: student-app-api.default.svc.cluster.local
+        port:
+          number: 8080
+    route:
+    - destination:
+         host: mongo.default.svc.cluster.local
+          port:
+            number: 27017
