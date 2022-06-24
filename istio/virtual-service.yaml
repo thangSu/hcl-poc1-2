@@ -21,7 +21,6 @@ spec:
   - route:
     - destination:
         host: student-app-client
-        subset: v1
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -34,4 +33,3 @@ spec:
   - route:
     - destination:
         host: mongo
-        subset: v1
