@@ -12,3 +12,24 @@ spec:
         protocol: HTTP
       hosts:
         - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ingress
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - gateway
+  http:
+    - match:
+      - uri:
+          prefix: '/'
+      - uri:
+          prefix: '/api'
+    - route:
+      - destination:
+          host: student-app-client.default.svc.cluster.local
+          port:
+            number: 80
