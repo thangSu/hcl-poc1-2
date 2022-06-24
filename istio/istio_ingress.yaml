@@ -19,15 +19,15 @@ metadata:
   name: ingress
 spec:
   hosts:
-    - "*"
+  - "*"
   gateways:
-    - gateway
+  - gateway
   http:
-    - match:
-      - uri:
-          prefix: '/?(.*)'
-      - uri:
-          prefix: '/api/?(.*)'
+  - match:
+    - uri:
+        prefix: '/?(.*)'
+    - uri:
+        prefix: '/api/?(.*)'
     route:
     - destination:
         host: student-app-client.default.svc.cluster.local
