@@ -1,23 +1,37 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: ingress
+  name: student-app-api
 spec:
   hosts:
-    - "*"
-  gateways:
-    - gateway
+  - student-app-api
   http:
-    - match:
-      - uri:
-          prefix: '/api'
-      route:
-      - destination:
-          host: student-app-api.default.svc.cluster.local
-          port:
-            number: 8080
-    - route:
-      - destination:
-          host: student-app-client.default.svc.cluster.local
-          port:
-            number: 80
+  - route:
+    - destination:
+        host: student-app-api
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: student-app-client
+spec:
+  hosts:
+  - student-app-client
+  http:
+  - route:
+    - destination:
+        host: student-app-client
+        subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: mongo
+spec:
+  hosts:
+  - mongo
+  http:
+  - route:
+    - destination:
+        host: mongo
+        subset: v1
