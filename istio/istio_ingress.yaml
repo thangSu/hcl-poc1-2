@@ -24,8 +24,6 @@ spec:
     - gateway
   http:
     - match:
-      - uri:
-          prefix: '/api'
       route:
       - destination:
           host: student-app-api.default.svc.cluster.local
