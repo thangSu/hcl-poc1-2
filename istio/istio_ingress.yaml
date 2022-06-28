@@ -26,15 +26,13 @@ spec:
     - match:
       - uri:
           prefix: '/api'
-      - uri:
-          prefix: '/'
       route:
-      - destination:
-          host: student-app-client.default.svc.cluster.local
-          port:
-            number: 80
-    - route:
       - destination:
           host: student-app-api.default.svc.cluster.local
           port:
             number: 8080
+    - route:
+      - destination:
+          host: sstudent-app-client.default.svc.cluster.local
+          port:
+            number: 80
