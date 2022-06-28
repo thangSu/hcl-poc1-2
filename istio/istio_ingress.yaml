@@ -24,12 +24,13 @@ spec:
   - gateway
   http:
   - match:
-    - uri:
-        prefix: '/'
-    - uri:
-        prefix: '/api'
     route:
     - destination:
-        host: student-app-client.default.svc.cluster.local
+        host: student-app-api.default.svc.cluster.local
         port:
-          number: 80
+          number: 8080
+  - route:
+    - destination
+    host: student-app-client.default.svc.cluster.local
+      port:
+        number: 80 
