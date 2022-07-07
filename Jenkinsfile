@@ -1,13 +1,5 @@
 pipeline {
 agent any
-  
-stages {
-  stage("clean"){
-    steps{
-      sh "docker image rm thangsu/student-app-client:latest"
-      sh "docker image rm registry.hub.docker.com/thangsu/student-app-api:0.0.1-SNAPSHOT "
-    }
-  }
   stage("back-end"){
     steps{
       dir ("spring-boot-student-app-api"){
