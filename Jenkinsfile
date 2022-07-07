@@ -1,5 +1,6 @@
 pipeline {
 agent any
+  
   stage("back-end"){
     steps{
       dir ("spring-boot-student-app-api"){
@@ -16,6 +17,5 @@ agent any
         //sh 'docker push thangsu/student-app-client:latest'
         }
       }
-   }
    }
 }
