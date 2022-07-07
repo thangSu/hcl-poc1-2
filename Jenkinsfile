@@ -33,9 +33,9 @@ agent any
           dir("helm"){
              script {
             if(env.check == ''){
-              sh 'helm install hehe .'
-            } else {
               sh 'helm upgrade hehe .'
+            } else {
+              sh 'helm install hehe .'
             }
             }
           }
