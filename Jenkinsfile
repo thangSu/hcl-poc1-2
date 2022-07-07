@@ -1,7 +1,7 @@
 pipeline {
 agent any
   environment {
-		DOCKERHUB_CREDENTIALS=credentials('ThangDocker')
+     DOCKERHUB_CREDENTIALS=credentials('ThangDocker')
   }
   stages {
     stage('Login') {
@@ -26,6 +26,11 @@ agent any
           sh 'docker push thangsu/student-app-client:latest'
           }
         }
+     }
+     stage("deloy"){
+	steps{
+	  dir()
+	}  
      }
   }
 }
