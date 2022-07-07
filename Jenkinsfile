@@ -1,17 +1,10 @@
 pipeline {
 agent any
 tools {
-// Install the Maven version configured as "M3" and add it to the path.
-maven "/usr/share/maven"
+  // Install the Maven version configured as "M3" and add it to the path.
+  maven "/usr/share/maven"
 }
 stages {
-
-  stage("get-commit") {
-    steps{
-      // Get some code from a GitHub repository
-      git 'https://github.com/thangSu/kubernetes-full-stack-example.git'
-    }
-  }
   stage("clean"){
     steps{
       sh "docker image rm thangsu/student-app-client:latest"
