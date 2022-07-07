@@ -13,7 +13,7 @@ agent any
       steps{
         dir ("spring-boot-student-app-api"){
           // Run Maven on a Unix agent.
-          sh "mvn -Dmaven.test.failure.ignore=true clean package docker:push"
+          sh "mvn -Dmaven.test.failure.ignore=true clean package dockerfile:push"
         }
         
        }
