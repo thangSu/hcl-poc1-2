@@ -1,6 +1,6 @@
 pipeline {
 agent any
-  
+stages {
   stage("back-end"){
     steps{
       dir ("spring-boot-student-app-api"){
@@ -18,4 +18,5 @@ agent any
         }
       }
    }
+}
 }
