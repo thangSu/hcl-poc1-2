@@ -31,7 +31,7 @@ agent any
 	    steps{
           sh 'export check=`helm list | grep hehe`'
           dir("helm"){
-            if (env.check == '') {
+            if(env.check == ''){
               sh 'helm install hehe .'
             } else {
               sh 'helm upgrade hehe .'
