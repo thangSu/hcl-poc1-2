@@ -9,7 +9,7 @@ agent any
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         }
 		}
-    stage("back-end"){
+    stage("back-end(build and push)"){
       steps{
         dir ("spring-boot-student-app-api"){
           // Run Maven on a Unix agent.
@@ -18,7 +18,7 @@ agent any
         
        }
     }
-    stage("font-end"){
+    stage("font-end(buld and push)"){
       steps{
         dir ("react-student-management-web-app"){
           // Run Maven on a Unix agent.
