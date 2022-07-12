@@ -5,7 +5,7 @@ sudo yum update -y
 #install jenkins
 
 # install docker
-sudo apt install docker -y
+sudo yum install docker -y
 sudo systemctl start docker
 sudo usermod -aG docker $USER
 # install minikube
@@ -14,7 +14,7 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/miniku
 sudo mkdir -p /usr/local/bin/
 sudo install minikube /usr/local/bin/
 #install conntrack
-sudo apt install conntrack -y
+sudo yum install conntrack -y
 
 #install kubectl
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
