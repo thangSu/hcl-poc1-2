@@ -22,8 +22,8 @@ agent any
       steps{
         dir ("react-student-management-web-app"){
           // Run Maven on a Unix agent.
-          sh "docker build . -t thangsu/student-app-client:1.0.1"
-          sh 'docker push thangsu/student-app-client:1.0.1'
+          sh "docker build . -t thangsu/student-app-client:1.0.2"
+          sh 'docker push thangsu/student-app-client:1.0.2'
           }
         }
      }
