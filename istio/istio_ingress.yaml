@@ -32,8 +32,6 @@ spec:
           port:
             number: 8080
     - route:
-      - uri:
-          prefix: '/'
       - destination:
           host: student-app-client.default.svc.cluster.local
           port:
