@@ -9,7 +9,7 @@ agent any
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         }
 		}
-    stage("back-end(build and push )"){
+    stage("back-end(build and push student-app-api)"){
       steps{
         dir ("spring-boot-student-app-api"){
           // Run Maven on a Unix agent.
@@ -27,7 +27,7 @@ agent any
           }
         }
      }
-     stage("deloy"){
+     stage("deloy or update"){
 	    steps{
           sh 'export check=`helm list | grep hehe`'
           dir("helm"){
