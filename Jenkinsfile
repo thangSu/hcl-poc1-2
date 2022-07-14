@@ -70,10 +70,10 @@ agent any
               script{
                 if (env.check_prom != "service/grafana-np"){
                 sh 'kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-np'
+                }
               }
           }
         }
       } 
     }
 }
-
