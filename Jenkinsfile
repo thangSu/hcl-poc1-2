@@ -55,7 +55,7 @@ agent any
       steps{
         dir ("monitoring"){
           // deloy prometheus
-              sh "helm dependency build prometheus"
+              //sh "helm dependency build prometheus"
               sh "helm upgrade prometheus prometheus --install"
               sh 'minikube service prometheus-server-np'
           // deloy grafana
