@@ -47,7 +47,7 @@ agent any
         sh 'helm upgrade istio-base istio/base -n istio-system --install'
         sh 'helm upgrade istiod istio/istiod -n istio-system --wait --install'
         sh 'kubectl label namespace default istio-injection=enabled --overwrite'
-        sh 'helm upgrade istio-ingress istio/gateway  -f custom_gw.yaml --wait --install'
+        sh 'helm upgrade istio-ingress istio/gateway  -f istio/custom_gw.yaml --wait --install'
         
       }
     }
