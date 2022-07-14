@@ -31,11 +31,13 @@ agent any
 	    steps{
           sh 'export check=`helm list | grep hehe`'
           dir("helm"){  
-            if(env.check == ''){
+          script{
+             if(env.check == ''){
               sh 'helm install hehe .'
             } else {
               sh 'helm upgrade hehe .'
             }
+          } 
           }
         }
 	  } 
