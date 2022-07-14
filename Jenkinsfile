@@ -57,12 +57,10 @@ agent any
           // deloy prometheus
               sh "helm dependency build prometheus"
               sh "helm upgrade prometheus prometheus --install"
-              sh 'kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-np'
               sh 'minikube service prometheus-server-np'
           // deloy grafana
                sh "helm dependency build grafana"
                sh "helm upgrade grafana grafana --install"
-               sh "kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-np"
                sh "minikube service grafana-np"
           }
         }
