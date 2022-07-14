@@ -55,7 +55,7 @@ agent any
       steps{
         dir ("monitoring"){
           // deloy prometheus
-              sh 'export check_prom=kubectl get all | grep prometheus-server-np| cut -f1 -d " "'
+              sh 'export check_prom=`kubectl get all | grep prometheus-server-np| cut -f1 -d " "`'
               sh 'echo $check_prom'
               //sh "helm dependency build prometheus"
               sh "helm upgrade prometheus prometheus --install"
@@ -65,7 +65,7 @@ agent any
                 }
               }
           // deloy grafana
-              sh 'export check_prom=kubectl get all | grep grafana-np| cut -f1 -d " "'
+              sh 'export check_prom=`kubectl get all | grep grafana-np| cut -f1 -d " "`'
               sh 'helm repo add bitnami https://charts.bitnami.com/bitnami'
               sh 'helm upgrade grafana bitnami/grafana --install -f grafana/values.yaml'
               script{
