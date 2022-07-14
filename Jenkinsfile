@@ -63,7 +63,7 @@ agent any
                //sh "helm upgrade grafana grafana --install"
                //sh "minikube service grafana-np"
                sh 'helm repo add bitnami https://charts.bitnami.com/bitnami'
-               sh 'helm upgrade grafana bitnami/grafana --install -f monitoring/grafana/values.yaml'
+               sh 'helm upgrade grafana bitnami/grafana --install -f grafana/values.yaml'
           }
         }
       } 
