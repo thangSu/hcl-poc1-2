@@ -55,15 +55,15 @@ agent any
       steps{
         dir ("monitoring"){
           // deloy prometheus
-              //sh "helm dependency build prometheus"
+              sh "helm dependency build prometheus"
               sh "helm upgrade prometheus prometheus --install"
-              //sh 'minikube service prometheus-server-np'
+              sh 'kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-np'
+              sh 'minikube service prometheus-server-np'
           // deloy grafana
-               //sh "helm dependency build grafana"
-               //sh "helm upgrade grafana grafana --install"
-               //sh "minikube service grafana-np"
                sh 'helm repo add bitnami https://charts.bitnami.com/bitnami'
                sh 'helm upgrade grafana bitnami/grafana --install -f grafana/values.yaml'
+               sh 'kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-np'
+               sh 'minikube service grafana-np'
           }
         }
       } 
