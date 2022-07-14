@@ -64,7 +64,7 @@ agent any
                sh "minikube service grafana-np"
           }
         }
-     } 
-     }
-  }
+      } 
+    }
 }
+
