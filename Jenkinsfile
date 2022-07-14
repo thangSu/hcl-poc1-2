@@ -34,45 +34,20 @@ agent any
     }
     stage("deploy or update api and client"){
 	    steps{
-          sh 'export check=`helm list | grep hehe`'
-          sh 'echo $check'
           dir("helm"){  
-          script{
-             if(env.check==" "){
-              sh 'helm install hehe .'
-            } else {
-              sh 'helm upgrade hehe .'
-            }
-          } 
+            sh 'helm upgrade hehe . --install'
           }
         }
 	  } 
     stage("deploy istio"){
       steps{
-        sh 'export check_istiod=`helm list -A | grep istiod`'
-        sh 'export check_istiod=`helm list -A | grep istio-base`'
-        sh 'export check_istioingress=`helm list -A | grep istio-ingress`'
         //add repo
         sh 'helm repo add istio https://istio-release.storage.googleapis.com/charts'
         sh 'helm repo update'
-        script {
-          if (env.check_istiobase==""){
-            sh 'kubectl create namespace istio-system'
-            sh 'helm install istio-base istio/base -n istio-system'
-          }
-        }
-        script {
-          if (env.check_istiod==""){
-            sh 'helm install istiod istio/istiod -n istio-system --wait'
-          }
-        }
-        dir("istio"){
-          script {
-            if (env.check_istioingress=="")
-            sh 'kubectl label namespace default istio-injection=enabled'
-            sh 'helm install istio-ingress istio/gateway  -f custom_gw.yaml --wait'
-          } 
-        }
+        sh 'helm upgrade istio-base istio/base -n istio-system --install'
+        sh 'helm upgrade istiod istio/istiod -n istio-system --wait --install'
+        sh 'kubectl label namespace default istio-injection=enabled'
+        sh 'helm upgrade istio-ingress istio/gateway  -f custom_gw.yaml --wait --install'
         
       }
     }
