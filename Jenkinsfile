@@ -35,6 +35,7 @@ agent any
     stage("deploy or update api and client"){
 	    steps{
           sh 'export check=`helm list | grep hehe`'
+          sh 'echo $check'
           dir("helm"){  
           script{
              if(env.check == ""){
