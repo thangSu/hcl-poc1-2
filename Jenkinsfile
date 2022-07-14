@@ -46,7 +46,7 @@ agent any
         sh 'helm repo update'
         sh 'helm upgrade istio-base istio/base -n istio-system --install'
         sh 'helm upgrade istiod istio/istiod -n istio-system --wait --install'
-        sh 'kubectl label namespace default istio-injection=enabled'
+        sh 'kubectl label namespace default istio-injection=enabled --overwrite'
         sh 'helm upgrade istio-ingress istio/gateway  -f custom_gw.yaml --wait --install'
         
       }
@@ -55,27 +55,13 @@ agent any
       steps{
         dir ("monitoring"){
           // deloy prometheus
-          sh 'export check_prometheus=`helm list -A | grep prometheus`'
-          script {
-            if (env.check_prometheus=="" ){
-              sh "helm install prometheus prometheus"
+              sh "helm upgrade prometheus prometheus --install"
               sh 'kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-np'
               sh 'minikube service prometheus-server-np'
-            }
-            else{
-              sh 'helm upgrade prometheus prometheus'
-            }
-          }
           // deloy grafana
-          sh 'export check_grafana=`helm list -A | grep grafana`'
-          script{
-            if(env.check_grafana==""){
-               sh "helm install grafana grafana"
+               sh "helm upgrade grafana grafana --install"
                sh "kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-np"
                sh "minikube service grafana-np"
-            }else{
-              sh 'helm upgrade grafana grafana'
-            }
           }
         }
      } 
