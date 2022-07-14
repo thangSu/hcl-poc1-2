@@ -38,7 +38,7 @@ agent any
           sh 'echo $check'
           dir("helm"){  
           script{
-             if(env.check == ""){
+             if(env.check==" "){
               sh 'helm install hehe .'
             } else {
               sh 'helm upgrade hehe .'
@@ -56,19 +56,19 @@ agent any
         sh 'helm repo add istio https://istio-release.storage.googleapis.com/charts'
         sh 'helm repo update'
         script {
-          if (env.check_istiobase == ""){
+          if (env.check_istiobase==""){
             sh 'kubectl create namespace istio-system'
             sh 'helm install istio-base istio/base -n istio-system'
           }
         }
         script {
-          if (env.check_istiod ==""){
+          if (env.check_istiod==""){
             sh 'helm install istiod istio/istiod -n istio-system --wait'
           }
         }
         dir("istio"){
           script {
-            if (env.check_istioingress == "")
+            if (env.check_istioingress=="")
             sh 'kubectl label namespace default istio-injection=enabled'
             sh 'helm install istio-ingress istio/gateway  -f custom_gw.yaml --wait'
           } 
@@ -82,7 +82,7 @@ agent any
           // deloy prometheus
           sh 'export check_prometheus=`helm list -A | grep prometheus`'
           script {
-            if (env.check_prometheus == "" ){
+            if (env.check_prometheus=="" ){
               sh "helm install prometheus prometheus"
               sh 'kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-np'
               sh 'minikube service prometheus-server-np'
@@ -94,7 +94,7 @@ agent any
           // deloy grafana
           sh 'export check_grafana=`helm list -A | grep grafana`'
           script{
-            if(env.check_grafana == ""){
+            if(env.check_grafana==""){
                sh "helm install grafana grafana"
                sh "kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-np"
                sh "minikube service grafana-np"
