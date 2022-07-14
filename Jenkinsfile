@@ -27,6 +27,11 @@ agent any
           }
         }
      }
+    stage ("prepair"){
+      steps{
+        sh 'unset check check_istiod check_istiod'
+      }
+    }
     stage("deploy or update api and client"){
 	    steps{
           sh 'export check=`helm list | grep hehe`'
@@ -44,7 +49,7 @@ agent any
     stage("deploy istio"){
       steps{
         sh 'export check_istiod=`helm list -A | grep istiod`'
-        sh 'export check_istiobase=`helm list -A | grep istio-base`'
+        sh 'export check_istiod=`helm list -A | grep istio-base`'
         sh 'export check_istioingress=`helm list -A | grep istio-ingress`'
         //add repo
         sh 'helm repo add istio https://istio-release.storage.googleapis.com/charts'
