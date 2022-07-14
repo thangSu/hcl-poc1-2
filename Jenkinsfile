@@ -57,11 +57,11 @@ agent any
           // deloy prometheus
               //sh "helm dependency build prometheus"
               sh "helm upgrade prometheus prometheus --install"
-              sh 'minikube service prometheus-server-np'
+              //sh 'minikube service prometheus-server-np'
           // deloy grafana
                sh "helm dependency build grafana"
                sh "helm upgrade grafana grafana --install"
-               sh "minikube service grafana-np"
+               //sh "minikube service grafana-np"
           }
         }
       } 
