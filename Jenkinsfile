@@ -57,7 +57,7 @@ agent any
           // deloy prometheus
               //sh 'export check_prom=`kubectl get all | grep prometheus-server-np| cut -f1 -d " "`'
               //sh 'echo $check_prom'
-              sh "helm dependency build prometheus"
+             // sh "helm dependency build prometheus"
               sh "helm upgrade prometheus prometheus --install"
               //script{
                 //if (env.check_prom != "service/prometheus-server-np"){
