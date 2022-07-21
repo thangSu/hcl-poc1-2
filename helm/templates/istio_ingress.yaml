@@ -26,6 +26,8 @@ spec:
     - match:
       - uri:
           prefix: '/api'
+      rewite:
+          uri: '/'
       route:
       - destination:
           host: {{ .Values.api.name }}.default.svc.cluster.local
