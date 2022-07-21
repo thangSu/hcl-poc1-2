@@ -8,7 +8,7 @@ api:
 client:
   name: student-app-client
   repCount: 1
-  image: thangsu/student-app-client:1.0.0
+  image: thangsu/student-app-client:1.0.5
   port: 80
   targetPort: 80
 
