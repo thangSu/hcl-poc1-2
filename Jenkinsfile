@@ -50,7 +50,7 @@ agent any
       steps{
         dir ("monitoring"){
               sh "helm upgrade prometheus prometheus --install"
-              sh 'helm upgrade grafana grafana --install"
+              sh "helm upgrade grafana grafana --install"
           }
         }
       } 
