@@ -27,11 +27,6 @@ agent any
           }
         }
      }
-    stage ("prepair"){
-      steps{
-        sh 'unset check check_istiod check_istiod'
-      }
-    }
     stage("deploy or update api and client"){
 	    steps{
           dir("helm"){  
@@ -54,25 +49,8 @@ agent any
     stage("deploy prometheus and grafana"){
       steps{
         dir ("monitoring"){
-          // deloy prometheus
-              //sh 'export check_prom=`kubectl get all | grep prometheus-server-np| cut -f1 -d " "`'
-              //sh 'echo $check_prom'
-             // sh "helm dependency build prometheus"
               sh "helm upgrade prometheus prometheus --install"
-              //script{
-                //if (env.check_prom != "service/prometheus-server-np"){
-                  //sh 'kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-np'
-                //}
-              //}
-          // deloy grafana
-              //sh 'export check_prom=`kubectl get all | grep grafana-np| cut -f1 -d " "`'
-              sh 'helm repo add bitnami https://charts.bitnami.com/bitnami'
-              sh 'helm upgrade grafana bitnami/grafana --install -f grafana/values.yaml'
-              //script{
-                //if (env.check_prom != "service/grafana-np"){
-                //sh 'kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-np'
-                //}
-              //}
+              sh 'helm upgrade grafana grafana --install"
           }
         }
       } 
