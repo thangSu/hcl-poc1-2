@@ -1,7 +1,7 @@
 ## Description
-Create EC2 instance with Kubernetes cluster using minikube.
-Create CI in Jenkins to create docker image and push the images to docker-hub registry.
-Create CD in Jenkins to use docker hub images and deploy application components on Kubernetes cluster using helm.
+- Create EC2 instance with Kubernetes cluster using minikube.
+- Create CI in Jenkins to create docker image and push the images to docker-hub registry.
+- Create CD in Jenkins to use docker hub images and deploy application components on Kubernetes cluster using helm.
 ## Prerequisites
 | name  | version |
 | ------------- | ------------- |
@@ -10,7 +10,7 @@ Create CD in Jenkins to use docker hub images and deploy application components 
 | Maven      |  3.6.3     |
 | Kubectl     | 1.24.0    |
 | Helm         | 3.0.0     |
-| Docker      ||
+| Docker      | 1.12.2    |
 
 ### step 1: create a intance: 
     - OS: Amazon linux
@@ -68,15 +68,38 @@ We install istio by using Helm:
 	kubectl label namespace default istio-injection=enabled
 	helm install istio-ingress istio/gateway -f   --wait
 ### step5: create CI/CD with Jenkins
+#### connect jenkins to minikube cluster
+- First time, we will connect jenkins to minikube cluster. Copy 2 foldes .minikube and .kube in home folder of user start minikube. And change user of them to Jenkins user.
+
+		sudo cp -r .minikube/ .kube/ /var/lib/jenkins/
+		sudo chown -R jenkins /var/lib/jenkins/.minikube /var/lib/jenkins/kube
+- change the path of 
+
+#### create jenkins job
 - Get admin password to first login Jenkins. Use this command:
 
 		sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 - Create jenkins pipline:
 
-![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(3).png)
+	![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(3).png)
 - make a trigger:
 
-![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(2).png)
+	![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(2).png)
 - store Jenkins file into repo and we will use Pipeline: SCM to implement that file.
 
-![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(1).png)
+	![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(1).png)
+	
+#### add github webhook
+
+	![](https://github.com/thangSu/thang-poc2/blob/master/data/Annotation%202022-07-25%20155115.png)
+
+#### create jenkinsfile
+Integrate helm in the Jenkins pipeline so that it uses these helm charts to
+
+	Deploy React application on Kubernetes
+	Deploy MongoDB persistance layer on Kubernetes
+	Deploy Spring Boot Backend API on Kubernetes
+	Deploy Istio and expose services using Istio VirtualService and Gateway and connect 	frontend to backend.
+	Deploy Prometheus and graffana and able to monitor using them.
+#### check CI/CD pipeline
+In line 16 change "Student Management APP" to "Student Management Appl" and push the changes to github in order to trigger a new build.
