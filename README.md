@@ -79,4 +79,4 @@ We install istio by using Helm:
 ![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(2).png)
 - store Jenkins file into repo and we will use Pipeline: SCM to implement that file.
 
-![] (https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(1).png)
+![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(1).png)
