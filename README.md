@@ -11,21 +11,22 @@
 | Kubectl     | 1.24.0    |
 | Helm         | 3.0.0     |
 | Docker      | 1.12.2    |
-## installation steps
-### step 1: create a intance: 
+## Installation steps
+### Step 1: create a intance: 
     - OS: Amazon linux
     - Instance tpye: t2.xLarge
     - Storage: 30GB
 
-### step 2: update system:
+### Step 2: update system:
    `sudo yum update`
-### step 3: install required applications by running bash script file : `install_package.sh`
-#### install docker
+### Step 3: install required applications 
+Run bash script file : `install_package.sh` to install them.
+#### Install docker
 	sudo yum install docker -y
 	sudo systemctl start docker
 	sudo usermod -aG docker $USER 
 	#this command is used to make current user can run docker commands. We will add that user to docker user group.
-#### install jenkins
+#### Install jenkins
 
 	sudo yum install java-1.8.0 -y 
 	# it is software requirement when installing jenkins
@@ -38,13 +39,15 @@ Add jenkins to docker group and start jenkins server
 	sudo usermod -aG docker jenkins 
 	sudo systemctl enable jenkins #enable the Jenkins service to start at boot
 	sudo systemctl start jenkins # start the Jenkins service
-#### install minikube
+#### Install minikube
+
 	curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 
 	chmod +x minikube
 	sudo mkdir -p /usr/local/bin/
 	sudo install minikube /usr/local/bin/
 we need to install conntrack because it is enable to start minikube in none driver
-#### install kubectl and helm
+	sudo yum install conntrack -y
+#### Install kubectl and helm
 install kubectl
 
 	curl -LO https://storage.googleapis.com/kubernetes-release/release/
@@ -57,7 +60,7 @@ install helm
 	curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 	chmod 700 get_helm.sh
 	./get_helm.sh
-### step 4: create cluster
+### Step 4: create cluster
 After install all required applications, we will start the Minikube. Run `install_kube.sh` that script file have necessary commands to start one cluster.
 
 	minikube  start --driver=none --kubernetes-version v1.23.8 #this command is used to start minikube
@@ -71,15 +74,15 @@ We install istio by using Helm:
 	helm install istiod istio/istiod -n istio-system --wait
 	kubectl label namespace default istio-injection=enabled
 	helm install istio-ingress istio/gateway -f   --wait
-### step 5: create CI/CD with Jenkins
-#### connect jenkins to minikube cluster
+### Step 5: create CI/CD with Jenkins
+#### Connect jenkins to minikube cluster
 - First time, we will connect jenkins to minikube cluster. Copy 2 foldes .minikube and .kube in home folder of user start minikube. And change user of them to Jenkins user.
 
 		sudo cp -r .minikube/ .kube/ /var/lib/jenkins/
 		sudo chown -R jenkins /var/lib/jenkins/.minikube /var/lib/jenkins/kube
 - change the path of 
 
-#### create jenkins job
+#### Create jenkins job
 - Get admin password to first login Jenkins. Use this command:
 
 		sudo cat /var/lib/jenkins/secrets/initialAdminPassword
@@ -93,11 +96,11 @@ We install istio by using Helm:
 
 	![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(1).png)
 	
-#### add github webhook
+#### Add github webhook
 
 ![](https://github.com/thangSu/thang-poc2/blob/master/data/Annotation%202022-07-25%20155115.png)
 
-#### create jenkinsfile
+#### Create jenkinsfile
 Integrate helm in the Jenkins pipeline so that it uses these helm charts to
 
 	Deploy React application on Kubernetes
@@ -105,6 +108,6 @@ Integrate helm in the Jenkins pipeline so that it uses these helm charts to
 	Deploy Spring Boot Backend API on Kubernetes
 	Deploy Istio and expose services using Istio VirtualService and Gateway and connect frontend to backend.
 	Deploy Prometheus and graffana and able to monitor using them.
-### step 6: check CI/CD pipeline
+### Step 6: check CI/CD pipeline
 - In line 16 change "Student Management APP" to "Student Management Appl" and push the changes to github in order to trigger a new build.
 - Try to access the application from minikube ip.
