@@ -1,7 +1,7 @@
 ## Description
-Create EC2 instance with Kubernetes cluster using minikube.
-Create CI in Jenkins to create docker image and push the images to docker-hub registry.
-Create CD in Jenkins to use docker hub images and deploy application components on Kubernetes cluster using helm.
+- Create EC2 instance with Kubernetes cluster using minikube.
+- Create CI in Jenkins to create docker image and push the images to docker-hub registry.
+- Create CD in Jenkins to use docker hub images and deploy application components on Kubernetes cluster using helm.
 ## Prerequisites
 | name  | version |
 | ------------- | ------------- |
