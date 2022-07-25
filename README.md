@@ -11,7 +11,7 @@
 | Kubectl     | 1.24.0    |
 | Helm         | 3.0.0     |
 | Docker      | 1.12.2    |
-## installation 
+## installation steps
 ### step 1: create a intance: 
     - OS: Amazon linux
     - Instance tpye: t2.xLarge
@@ -67,7 +67,7 @@ We install istio by using Helm:
 	helm install istiod istio/istiod -n istio-system --wait
 	kubectl label namespace default istio-injection=enabled
 	helm install istio-ingress istio/gateway -f   --wait
-### step5: create CI/CD with Jenkins
+### step 5: create CI/CD with Jenkins
 #### connect jenkins to minikube cluster
 - First time, we will connect jenkins to minikube cluster. Copy 2 foldes .minikube and .kube in home folder of user start minikube. And change user of them to Jenkins user.
 
@@ -101,5 +101,5 @@ Integrate helm in the Jenkins pipeline so that it uses these helm charts to
 	Deploy Spring Boot Backend API on Kubernetes
 	Deploy Istio and expose services using Istio VirtualService and Gateway and connect 	frontend to backend.
 	Deploy Prometheus and graffana and able to monitor using them.
-#### check CI/CD pipeline
+###step 6: check CI/CD pipeline
 In line 16 change "Student Management APP" to "Student Management Appl" and push the changes to github in order to trigger a new build.
