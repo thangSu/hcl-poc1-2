@@ -18,7 +18,7 @@
     - Storage: 30GB
 
 ### _Step 2: update system:_
-   `sudo yum update`
+	sudo yum update
 ### _Step 3: install required applications_
 Run bash script file : `install_package.sh` to install them.
 #### Install docker
