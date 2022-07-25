@@ -17,9 +17,9 @@
     - Instance tpye: t2.xLarge
     - Storage: 30GB
 
-### Step 2: update system:
+### _Step 2: update system:_
    `sudo yum update`
-### Step 3: install required applications 
+### _Step 3: install required applications_
 Run bash script file : `install_package.sh` to install them.
 #### Install docker
 	sudo yum install docker -y
@@ -60,7 +60,7 @@ install helm
 	curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 	chmod 700 get_helm.sh
 	./get_helm.sh
-### Step 4: create cluster
+### _Step 4: create cluster_
 After install all required applications, we will start the Minikube. Run `install_kube.sh` that script file have necessary commands to start one cluster.
 
 	minikube  start --driver=none --kubernetes-version v1.23.8 #this command is used to start minikube
@@ -74,7 +74,7 @@ We install istio by using Helm:
 	helm install istiod istio/istiod -n istio-system --wait
 	kubectl label namespace default istio-injection=enabled
 	helm install istio-ingress istio/gateway -f   --wait
-### Step 5: create CI/CD with Jenkins
+### _Step 5: create CI/CD with Jenkins_
 #### Connect jenkins to minikube cluster
 - First time, we will connect jenkins to minikube cluster. Copy 2 foldes .minikube and .kube in home folder of user start minikube. And change user of them to Jenkins user.
 
@@ -108,6 +108,6 @@ Integrate helm in the Jenkins pipeline so that it uses these helm charts to
 	Deploy Spring Boot Backend API on Kubernetes
 	Deploy Istio and expose services using Istio VirtualService and Gateway and connect frontend to backend.
 	Deploy Prometheus and graffana and able to monitor using them.
-### Step 6: check CI/CD pipeline
+### _Step 6: check CI/CD pipeline_
 - In line 16 change "Student Management APP" to "Student Management Appl" and push the changes to github in order to trigger a new build.
 - Try to access the application from minikube ip.
