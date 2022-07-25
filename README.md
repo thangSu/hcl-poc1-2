@@ -101,5 +101,5 @@ Integrate helm in the Jenkins pipeline so that it uses these helm charts to
 	Deploy Spring Boot Backend API on Kubernetes
 	Deploy Istio and expose services using Istio VirtualService and Gateway and connect 	frontend to backend.
 	Deploy Prometheus and graffana and able to monitor using them.
-###step 6: check CI/CD pipeline
+### step 6: check CI/CD pipeline
 In line 16 change "Student Management APP" to "Student Management Appl" and push the changes to github in order to trigger a new build.
