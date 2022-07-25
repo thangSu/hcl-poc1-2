@@ -91,7 +91,7 @@ We install istio by using Helm:
 	
 #### add github webhook
 
-	![](https://github.com/thangSu/thang-poc2/blob/master/data/Annotation%202022-07-25%20155115.png)
+![](https://github.com/thangSu/thang-poc2/blob/master/data/Annotation%202022-07-25%20155115.png)
 
 #### create jenkinsfile
 Integrate helm in the Jenkins pipeline so that it uses these helm charts to
