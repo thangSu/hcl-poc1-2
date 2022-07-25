@@ -23,10 +23,12 @@
 #### install docker
 	sudo yum install docker -y
 	sudo systemctl start docker
-	sudo usermod -aG docker $USER #this command is used to make current user can run docker commands. We will add that user to docker user group.
+	sudo usermod -aG docker $USER 
+	#this command is used to make current user can run docker commands. We will add that user to docker user group.
 #### install jenkins
 
-	sudo yum install java-1.8.0 -y # it is software requirement when installing jenkins
+	sudo yum install java-1.8.0 -y 
+	# it is software requirement when installing jenkins
 	sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo 
  	sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 	sudo yum upgrade -y
@@ -37,14 +39,16 @@ Add jenkins to docker group and start jenkins server
 	sudo systemctl enable jenkins #enable the Jenkins service to start at boot
 	sudo systemctl start jenkins # start the Jenkins service
 #### install minikube
-	curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
+	curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 
+	chmod +x minikube
 	sudo mkdir -p /usr/local/bin/
 	sudo install minikube /usr/local/bin/
 we need to install conntrack because it is enable to start minikube in none driver
 #### install kubectl and helm
 install kubectl
 
-	curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+	curl -LO https://storage.googleapis.com/kubernetes-release/release/
+	curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 	chmod +x ./kubectl
 	sudo mv ./kubectl /usr/local/bin/kubectl
 
