@@ -1,7 +1,7 @@
 ## Description
-- Create EC2 instance with Kubernetes cluster using minikube.
-- Create CI in Jenkins to create docker image and push the images to docker-hub registry.
-- Create CD in Jenkins to use docker hub images and deploy application components on Kubernetes cluster using helm.
+Create EC2 instance with Kubernetes cluster using minikube.
+Create CI in Jenkins to create docker image and push the images to docker-hub registry.
+Create CD in Jenkins to use docker hub images and deploy application components on Kubernetes cluster using helm.
 ## Prerequisites
 | name  | version |
 | ------------- | ------------- |
@@ -68,5 +68,8 @@ We install istio by using Helm:
 	kubectl label namespace default istio-injection=enabled
 	helm install istio-ingress istio/gateway -f   --wait
 ### step5: create CI/CD with Jenkins
+- Get admin password to first login Jenkins. Use this command:
 
-
+		sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+- Create jenkins pipline:
+	![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(3).png)
