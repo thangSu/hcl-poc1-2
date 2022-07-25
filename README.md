@@ -11,7 +11,7 @@
 | Kubectl     | 1.24.0    |
 | Helm         | 3.0.0     |
 | Docker      | 1.12.2    |
-
+## installation 
 ### step 1: create a intance: 
     - OS: Amazon linux
     - Instance tpye: t2.xLarge
