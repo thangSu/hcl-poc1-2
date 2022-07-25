@@ -14,13 +14,16 @@ Create CD in Jenkins to use docker hub images and deploy application components 
 | Docker      ||
 
 ####step 1: create a intance: 
+
     - OS: Amazon linux
     - Instance tpye: t2.xLarge
     - Storage: 30GB
 
 ####step 2: update system:
+
    `sudo yum update`
 ####step 3: install required applications by running bash script file : `install_package.sh`
+
 #####install docker
 	sudo yum install docker -y
 	sudo systemctl start docker
