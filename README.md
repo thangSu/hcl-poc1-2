@@ -134,6 +134,7 @@ Create jenkins pipline:
 #### Add github webhook
 
 <img src="https://github.com/thangSu/thang-poc2/blob/master/data/Annotation%202022-07-25%20155115.png" alt="drawing" width="850"/>
+
 ### _Step 6: Deloy helm chart_
 
 #### Create jenkinsfile
