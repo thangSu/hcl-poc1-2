@@ -76,17 +76,52 @@ We install istio by using Helm:
 	helm install istio-ingress istio/gateway -f   --wait
 ### _Step 5: create CI/CD with Jenkins_
 #### Connect jenkins to minikube cluster
-- First time, we will connect jenkins to minikube cluster. Copy 2 foldes .minikube and .kube in home folder of user start minikube. And change user of them to Jenkins user.
+First time, we will connect jenkins to minikube cluster. Copy 2 foldes .minikube and .kube in home folder of user start minikube. And change user of them to Jenkins user.
 
-		sudo cp -r .minikube/ .kube/ /var/lib/jenkins/
-		sudo chown -R jenkins /var/lib/jenkins/.minikube /var/lib/jenkins/kube
-- change the path of 
+	sudo cp -r .minikube/ .kube/ /var/lib/jenkins/
+	sudo chown -R jenkins /var/lib/jenkins/.minikube /var/lib/jenkins/kube
+Modify the path of certificate-authority, client-certificate and client-key:	
+```
+	  apiVersion: v1
+	  clusters:
+	  - cluster:
+		certificate-authority: /var/lib/jenkins/.minikube/ca.crt
+		extensions:
+		- extension:
+			last-update: Mon, 18 Jul 2022 04:55:53 UTC
+			provider: minikube.sigs.k8s.io
+			version: v1.26.0
+		  name: cluster_info
+		server: https://10.0.0.94:8443
+	    name: minikube
+	  contexts:
+	  - context:
+		cluster: minikube
+		extensions:
+		- extension:
+			last-update: Mon, 18 Jul 2022 04:55:53 UTC
+			provider: minikube.sigs.k8s.io
+			version: v1.26.0
+		  name: context_info
+		namespace: default
+		user: minikube
+	    name: minikube
+	  current-context: minikube
+	  kind: Config
+	  preferences: {}
+	  users:
+	  - name: minikube
+	    user:
+		client-certificate: /var/lib/jenkins/.minikube/profiles/minikube/client.crt
+		client-key: /var/lib/jenkins/.minikube/profiles/minikube/client.key
 
+```
 #### Create jenkins job
-- Get admin password to first login Jenkins. Use this command:
+Get admin password to first login and setup Jenkins. Use this command:
 
-		sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-- Create jenkins pipline:
+	sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Create jenkins pipline:
+- Choose the type of pipeline and project name. 
 
 <img src="https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(3).png" alt="drawing" width="850"/>
 - make a trigger:
