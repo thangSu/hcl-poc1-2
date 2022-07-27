@@ -91,10 +91,10 @@ We install istio by using Helm:
 <img src="https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(3).png" alt="drawing" width="800"/>
 - make a trigger:
 
-![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(2).png)
+<img src="https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(2).png" alt="drawing" width="800"/>
 - store Jenkins file into repo and we will use Pipeline: SCM to implement that file.
 
-![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(1).png)
+<img src="https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(1).png" alt="drawing" width="800"/>
 	
 #### Add github webhook
 
