@@ -120,5 +120,6 @@ And check the list helm chart was deloyed:
 	
 ![](https://github.com/NguyenTienHCL/POC-L1/blob/main/MicrosoftTeams-image%20(5).png)
 ### _Step 7: check CI/CD pipeline_
-- In line 16 change "Student Management APP" to "Student Management Appl" and push the changes to github in order to trigger a new build.
 - Try to access the application from minikube ip.
+- And make a change to check CI/CD pipeline. In line 16 change "Student Management APP" to "Student Management Appl" and push the changes to github in order to trigger a new build.
+- avigate to this app by ip minikube. verify this change.
