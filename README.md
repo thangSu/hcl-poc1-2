@@ -82,38 +82,38 @@ First time, we will connect jenkins to minikube cluster. Copy 2 foldes .minikube
 	sudo chown -R jenkins /var/lib/jenkins/.minikube /var/lib/jenkins/kube
 Modify the path of certificate-authority, client-certificate and client-key:	
 ```
-	  apiVersion: v1
-	  clusters:
-	  - cluster:
-		certificate-authority: /var/lib/jenkins/.minikube/ca.crt
-		extensions:
-		- extension:
-			last-update: Mon, 18 Jul 2022 04:55:53 UTC
-			provider: minikube.sigs.k8s.io
-			version: v1.26.0
-		  name: cluster_info
-		server: https://10.0.0.94:8443
-	    name: minikube
-	  contexts:
-	  - context:
-		cluster: minikube
-		extensions:
-		- extension:
-			last-update: Mon, 18 Jul 2022 04:55:53 UTC
-			provider: minikube.sigs.k8s.io
-			version: v1.26.0
-		  name: context_info
-		namespace: default
-		user: minikube
-	    name: minikube
-	  current-context: minikube
-	  kind: Config
-	  preferences: {}
-	  users:
-	  - name: minikube
-	    user:
-		client-certificate: /var/lib/jenkins/.minikube/profiles/minikube/client.crt
-		client-key: /var/lib/jenkins/.minikube/profiles/minikube/client.key
+  apiVersion: v1
+  clusters:
+  - cluster:
+  	certificate-authority: /var/lib/jenkins/.minikube/ca.crt
+  	extensions:
+  	- extension:
+  		last-update: Mon, 18 Jul 2022 04:55:53 UTC
+  		provider: minikube.sigs.k8s.io
+  		version: v1.26.0
+  	  name: cluster_info
+  	server: https://10.0.0.94:8443
+    name: minikube
+  contexts:
+  - context:
+  	cluster: minikube
+  	extensions:
+  	- extension:
+  		last-update: Mon, 18 Jul 2022 04:55:53 UTC
+  		provider: minikube.sigs.k8s.io
+  		version: v1.26.0
+  	  name: context_info
+  	namespace: default
+  	user: minikube
+    name: minikube
+  current-context: minikube
+  kind: Config
+  preferences: {}
+  users:
+  - name: minikube
+    user:
+  	client-certificate: /var/lib/jenkins/.minikube/profiles/minikube/client.crt
+  	client-key: /var/lib/jenkins/.minikube/profiles/minikube/client.keyy
 
 ```
 #### Create jenkins job
