@@ -99,7 +99,7 @@ We install istio by using Helm:
 #### Add github webhook
 
 ![](https://github.com/thangSu/thang-poc2/blob/master/data/Annotation%202022-07-25%20155115.png)
-
+### _Step 6: Deloy helm chart_
 #### Create jenkinsfile
 Integrate helm in the Jenkins pipeline so that it uses these helm charts to
 
@@ -108,6 +108,13 @@ Integrate helm in the Jenkins pipeline so that it uses these helm charts to
 - Deploy Spring Boot Backend API on Kubernetes
 - Deploy Istio and expose services using Istio VirtualService and Gateway and connect frontend to backend.
 - Deploy Prometheus and graffana and able to monitor using them.
-### _Step 6: check CI/CD pipeline_
+#### Deloy helm chart by CI/CD
+After deloying, we run this command:
+	kubectl get all -A # this command show pod,svc,.. in all namespace. 
+![](https://github.com/NguyenTienHCL/POC-L1/blob/main/MicrosoftTeams-image%20(4).png)
+And check the list helm chart was deloyed:
+	helm list -A
+![](https://github.com/NguyenTienHCL/POC-L1/blob/main/MicrosoftTeams-image%20(5).png)
+### _Step 7: check CI/CD pipeline_
 - In line 16 change "Student Management APP" to "Student Management Appl" and push the changes to github in order to trigger a new build.
 - Try to access the application from minikube ip.
