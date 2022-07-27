@@ -146,12 +146,12 @@ Integrate helm in the Jenkins pipeline so that it uses these helm charts to
 - Deploy Istio and expose services using Istio VirtualService and Gateway and connect frontend to backend.
 - Deploy Prometheus and graffana and able to monitor using them.
 #### Deloy helm chart by CI/CD
-After deloying, we run this command:
+After deloying, we run this command to check everything is fine or not. If not, we will find and fix them:
 
 	kubectl get all -A # this command show pod,svc,.. in all namespace. 
 	
 ![](https://github.com/NguyenTienHCL/POC-L1/blob/main/MicrosoftTeams-image%20(4).png)
-And check the list helm chart was deloyed:
+And check the list of helm charts was deloyed:
 	
 	helm list -A
 	
