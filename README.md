@@ -103,11 +103,11 @@ We install istio by using Helm:
 #### Create jenkinsfile
 Integrate helm in the Jenkins pipeline so that it uses these helm charts to
 
-	Deploy React application on Kubernetes
-	Deploy MongoDB persistance layer on Kubernetes
-	Deploy Spring Boot Backend API on Kubernetes
-	Deploy Istio and expose services using Istio VirtualService and Gateway and connect frontend to backend.
-	Deploy Prometheus and graffana and able to monitor using them.
+- Deploy React application on Kubernetes
+- Deploy MongoDB persistance layer on Kubernetes
+- Deploy Spring Boot Backend API on Kubernetes
+- Deploy Istio and expose services using Istio VirtualService and Gateway and connect frontend to backend.
+- Deploy Prometheus and graffana and able to monitor using them.
 ### _Step 6: check CI/CD pipeline_
 - In line 16 change "Student Management APP" to "Student Management Appl" and push the changes to github in order to trigger a new build.
 - Try to access the application from minikube ip.
