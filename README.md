@@ -88,17 +88,17 @@ We install istio by using Helm:
 		sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 - Create jenkins pipline:
 
-<img src="https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(3).png" alt="drawing" width="800"/>
+<img src="https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(3).png" alt="drawing" width="850"/>
 - make a trigger:
 
 <img src="https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(2).png" alt="drawing" width="400"/>
 - store Jenkins file into repo and we will use Pipeline: SCM to implement that file.
 
-<img src="https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(1).png" alt="drawing" width="800"/>
+<img src="https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(1).png" alt="drawing" width="850"/>
 	
 #### Add github webhook
 
-<img src="https://github.com/thangSu/thang-poc2/blob/master/data/Annotation%202022-07-25%20155115.png" alt="drawing" width="800"/>
+<img src="https://github.com/thangSu/thang-poc2/blob/master/data/Annotation%202022-07-25%20155115.png" alt="drawing" width="850"/>
 ### _Step 6: Deloy helm chart_
 #### Create jenkinsfile
 Integrate helm in the Jenkins pipeline so that it uses these helm charts to
