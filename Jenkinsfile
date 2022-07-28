@@ -39,8 +39,10 @@ agent any
         //add repo
         sh 'helm repo add istio https://istio-release.storage.googleapis.com/charts'
         sh 'helm repo update'
-        sh 'helm upgrade istio-base istio/base -n istio-system --install'
-        sh 'helm upgrade istiod istio/istiod -n istio-system --install'
+	//install istio
+        sh 'helm upgrade istio-base istio/base --install --create-namespace istio-system'
+        sh 'helm upgrade istiod istio/istiod -n istio-system --install --create-namespace istio-system'
+	//install istio-ingress
         sh 'kubectl label namespace default istio-injection=enabled --overwrite'
         sh 'helm upgrade istio-ingress istio/gateway  -f istio/custom_gw.yaml --wait --install'
         
