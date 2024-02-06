@@ -88,7 +88,7 @@ We install istio by using Helm:
 		sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 - Create jenkins pipline:
 
-	![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(3).png)
+	![](./data/MicrosoftTeams-image1%20(3).png)
 - make a trigger:
 
 	![](https://github.com/thangSu/thang-poc2/blob/master/data/MicrosoftTeams-image1%20(2).png)
